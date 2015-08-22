@@ -1,0 +1,12 @@
+﻿@model SynMetal_MVC.Models.SaveObject
+<div class="alert-danger">
+    Fail!<br />
+    Errors: <br/>
+    <ul>
+        @foreach (string err in Model.Error)
+        {
+            <li>@err</li>
+        }
+    </ul>
+
+</div>

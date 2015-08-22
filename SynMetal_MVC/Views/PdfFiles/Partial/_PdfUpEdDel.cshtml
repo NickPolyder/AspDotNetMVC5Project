@@ -1,0 +1,49 @@
+﻿@using SynMetal_MVC.Models
+
+@{
+    string error;
+    if ((string)(Session["ToBigFile"]) != null)
+    {
+        error = (string)(Session["ToBigFile"]);
+        Session.Remove("ToBigFile");
+    }
+    else
+    {
+        error = null;
+    }
+}
+
+<div class="form-group">
+
+    @Html.Label("PDF", htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        <div class="form-group">
+            <div class="col-md-10">
+                @if (error != null)
+                {
+                    <div class="text-danger">
+                        @error
+                    </div>
+                }
+                @if (ViewBag.Errors != null)
+                {
+                    foreach (string Err in ViewBag.Errors)
+                    {
+                        <div class="text-danger">
+                            @Err
+                        </div>
+                    }
+                }
+            </div>
+            <div class="col-md-10">
+
+                <input type="file" id="FileUpload" name="FileUpload" />
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+

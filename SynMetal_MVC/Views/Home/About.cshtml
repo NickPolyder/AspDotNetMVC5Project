@@ -1,0 +1,45 @@
+﻿@model IEnumerable<SynMetal_MVC.Models.PdfCategory>
+@{
+    ViewBag.Title = "About";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<p>Use this area to provide additional information.</p>
+@if(User.IsInRole("Administrator") || User.IsInRole("Moderator"))
+{ 
+<div class="row right" >
+    <div class="col-md-5 right" style="float:right;"><ul class="nav nav-pills">
+    <li role="presentation">@Html.ActionLink("Upload PDF","Create","PdfFiles",null,null)</li>
+    <li role="presentation">@Html.ActionLink("PDF Categories", "Index", "PdfCategories", null, null)</li>
+  
+</ul></div>
+</div>
+    <hr />
+}
+
+<div class="row">
+    <div class="col-md-2">
+        <ul id="sidemenu" class="nav nav-pills nav-stacked">
+            <li role="presentation" class="active"><a href="#" data-name="ForUs">Για Εμάς</a></li>
+            @foreach (var mod in Model)
+            {
+                <li role="presentation"><a href="#" data-name="Checked" data-id="@mod.CategoryId">@mod.Name</a></li>
+            }
+            
+            @*<li role="presentation"><a href="#" data-name="InvAGM">Προσκλήση</a></li>
+            <li role="presentation"><a href="#" data-name="RepBoD">Έκθεση ΔΣ</a></li>
+            <li role="presentation"><a href="#" data-name="RepAcc">Έκθεση Ελεγκτων</a></li>*@
+
+        </ul>
+    </div>
+    <div id="Target_Results" class="col-md-8">
+        @Html.Partial("Partial/_ForUs")
+    </div>
+</div>
+
+@section Scripts{
+    
+    @Scripts.Render("~/bundles/clientFunc")
+    
+    }

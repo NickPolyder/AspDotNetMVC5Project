@@ -1,0 +1,63 @@
+﻿@using SynMetal_MVC.Models
+@model PhotoFile
+@{
+    PhotoFile Files = null;
+    if (ViewBag.FileName != null)
+    {
+        Files = ViewBag.FileName;
+    }
+    else if (TempData["FileName"] != null)
+    {
+        Files = (PhotoFile)TempData["FileName"];
+    }
+    else if (Model != null  && Model.PhotoId > 0)
+    {
+        Files = Model;
+    }
+}
+
+<div class="form-group">
+
+    @Html.Label("Photo", htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @if (Files == null)
+        {
+            <div class="thumbnail" id="results" data-disabled="disabled"></div>
+            <div class="btn btn-default">
+                @Html.ActionLink("Upload Photo", "UploadPhoto")
+            </div>
+        }
+        else
+        {
+
+            <div class="row">
+                <div class="col-sm-6 col-md-4">
+                    <div class="thumbnail" id="results">
+                        <img src="@Url.Content(Files.FilePath)" alt="@Files.Name" />
+                        <div class="caption text-center">
+                            <h4><small>Description</small></h4>
+                            <p><em>@Files.Description</em></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="hidden" id="PhotoId" name="PhotoId" value="@Files.PhotoId" />
+
+
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    @Html.ActionLink("Edit Photo", "EditPhoto", new { id = Files.PhotoId },
+                           htmlAttributes: new { @class = "btn btn-info" })
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    @Html.ActionLink("Delete Photo", "", null,
+                           htmlAttributes: new { @class = "btn btn-danger", @data_id = Files.PhotoId, @data_name = "DelPhoto" })
+                </div>
+            </div>
+
+
+        }
+    </div>
+</div>
+
+
