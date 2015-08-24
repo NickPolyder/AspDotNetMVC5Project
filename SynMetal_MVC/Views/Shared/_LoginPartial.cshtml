@@ -5,11 +5,22 @@
     {
     @Html.AntiForgeryToken()
 
+        
     <ul class="nav navbar-nav navbar-right">
-        <li>
-            @Html.ActionLink(ResourceFiles.Resources.Welcome +" "+ User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+        <li class="dropdown">
+            <a aria-expanded="false" aria-haspopup="true"
+                role="button" data-toggle="dropdown"
+                class="dropdown-toggle" href="#">@(ResourceFiles.Resources.Welcome + " " + User.Identity.GetUserName() + "!") <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+                <li>@Html.ActionLink("Manage", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })</li>
+                <li class="divider" role="separator"></li>
+                <li><a href="javascript:document.getElementById('logoutForm').submit()">@ResourceFiles.Resources.LogOutLink</a></li>
+              
+            </ul>
+              @*@Html.ActionLink(ResourceFiles.Resources.Welcome +" "+ User.Identity.GetUserName() + "!",
+                   "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })*@
         </li>
-        <li><a href="javascript:document.getElementById('logoutForm').submit()">@ResourceFiles.Resources.LogOutLink</a></li>
+        
     </ul>
     }
 }

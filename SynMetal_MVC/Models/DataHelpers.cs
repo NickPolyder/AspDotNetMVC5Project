@@ -21,6 +21,39 @@ namespace SynMetal_MVC.Models
 
 
     }
+    static class Search
+    {
+        static SynMetalEntities db = new SynMetalEntities();
+        public static List<Product> ByCategory(int? id)
+        {
+            List<Product> products;
+            if (id != null && Regex.IsMatch(id.ToString(), Variables.RegexForNumbers))
+            {
+                var cat = db.ProdCategories.Find(id);
+                var prod = from prd in db.Products
+                           where prd.Category.CategoryId == cat.CategoryId
+                           select prd;
+                products = prod.ToList();
+                for (int i = 0; i < products.Count; i++)
+                {
+                    products[i].Category = cat;
+                }
+
+            }
+            else
+            {
+                var prod = db.Products;
+                products = prod.ToList();
+                for (int i = 0; i < prod.Count(); i++)
+                {
+                    products[i].Category = db.ProdCategories.Find(products[i].Category.CategoryId);
+                }
+
+
+            }
+            return products;
+        }
+    }
 
 
     public class SaveObject

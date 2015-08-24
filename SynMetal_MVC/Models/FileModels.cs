@@ -14,10 +14,14 @@ namespace SynMetal_MVC.Models
         [Key]
         public virtual int PhotoId { get; set; }
         public virtual string FilePath { get; set; }
-        [RegularExpression(Variables.RegexForNames, ErrorMessage = "Description Must be a string in range of A-Z , a-z , 0-9 , '-', '_'")]
+        [Display(ResourceType = typeof(ResourceFiles.Resources), Name = "FileName")]
+        [RegularExpression(Variables.RegexForNames,
+            ErrorMessageResourceType = typeof(ERRMSG.ERRMSG), ErrorMessageResourceName = "StringRegex")]
         public virtual string Name { get; set; }
+        [Display(ResourceType = typeof(ResourceFiles.Resources), Name = "Description")]
         [DataType(DataType.MultilineText)]
-        [RegularExpression(Variables.RegexForNames, ErrorMessage = "Description Must be a string in range of A-Z , a-z , 0-9 , '-', '_'")]
+        [RegularExpression(Variables.RegexForNames, 
+            ErrorMessageResourceType = typeof(ERRMSG.ERRMSG), ErrorMessageResourceName = "StringRegex")]
         public virtual string Description { get; set; }
 
     }
@@ -27,12 +31,17 @@ namespace SynMetal_MVC.Models
         [Key]
         public virtual int PdfId { get; set; }
         public virtual string FilePath { get; set; } // File Path on the server
-        [RegularExpression(Variables.RegexForNames, ErrorMessage = "Description Must be a string in range of A-Z , a-z , 0-9 , '-', '_'")]
+        [Display(ResourceType = typeof(ResourceFiles.Resources), Name = "FileName")]
+        [RegularExpression(Variables.RegexForNames, 
+            ErrorMessageResourceType = typeof(ERRMSG.ERRMSG), ErrorMessageResourceName = "StringRegex")]
         public virtual string FileName { get; set; } // File Name
+        [Display(ResourceType = typeof(ResourceFiles.Resources), Name = "Description")]
         [DataType(DataType.MultilineText)]
-        [RegularExpression(Variables.RegexForNames, ErrorMessage = "Description Must be a string in range of A-Z , a-z , 0-9 , '-', '_'")]
+        [RegularExpression(Variables.RegexForNames,
+            ErrorMessageResourceType = typeof(ERRMSG.ERRMSG), ErrorMessageResourceName = "StringRegex")]
         public virtual string Description { get; set; } // The Description of the file
         [Required]
+        [Display(ResourceType = typeof(ResourceFiles.Resources), Name = "PDFCat")]
         public virtual PdfCategory Category { get; set; } // Category of pdf
     }
 
@@ -42,9 +51,11 @@ namespace SynMetal_MVC.Models
         [Key]
         public virtual int CategoryId { get; set; }
         [Required]
-        [Display(Name = "PDF Category Name")]
-        [StringLength(30, MinimumLength = 2, ErrorMessage = "The Name must be from 2 to 30 length")]
-        [RegularExpression(Variables.RegexForNames, ErrorMessage = "Name Must be a string in range of A-Z , a-z , 0-9 , '-', '_'")]
+        [Display(ResourceType = typeof(ResourceFiles.Resources), Name = "Category")]
+        [StringLength(30, MinimumLength = 2,
+            ErrorMessageResourceType = typeof(ERRMSG.ERRMSG), ErrorMessageResourceName = "StringMinMax")]
+        [RegularExpression(Variables.RegexForNames, 
+            ErrorMessageResourceType = typeof(ERRMSG.ERRMSG), ErrorMessageResourceName = "StringRegex")]
 
         public virtual string Name { get; set; }
     }

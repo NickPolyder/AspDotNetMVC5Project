@@ -29,7 +29,7 @@ namespace SynMetal_MVC.Models
         public string Provider { get; set; }
 
         [Required]
-        [Display(Name = "Code")]
+        [Display(ResourceType = typeof(ResourceFiles.Resources),Name ="Code")]
         public string Code { get; set; }
         public string ReturnUrl { get; set; }
 
@@ -49,24 +49,26 @@ namespace SynMetal_MVC.Models
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "User Name")]
-        [RegularExpression(@"[A-Za-z0-9]+",ErrorMessage = "Not Valid UserName")]
+        [Display(Name = "UserName", ResourceType = typeof(ResourceFiles.Resources))]
+        [RegularExpression(@"[A-Za-z0-9]+",
+            ErrorMessageResourceType = typeof(ERRMSG.ERRMSG),ErrorMessageResourceName = "UserName")]
         public string UserName { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Password", ResourceType = typeof(ResourceFiles.Resources))]
         public string Password { get; set; }
 
-        [Display(Name = "Remember me?")]
+        [Display(Name = "RememberMe", ResourceType = typeof(ResourceFiles.Resources))]
         public bool RememberMe { get; set; }
     }
 
     public class RegisterViewModel
     {
         [Required]
-        [Display(Name = "User Name")]
-        [RegularExpression(@"[A-Za-z0-9]+", ErrorMessage = "Not Valid UserName")]
+        [Display(Name = "UserName", ResourceType = typeof(ResourceFiles.Resources))]
+        [RegularExpression(@"[A-Za-z0-9]+",
+            ErrorMessageResourceType = typeof(ERRMSG.ERRMSG), ErrorMessageResourceName = "UserName")]
         public string UserName { get; set; }
 
         [Required]
@@ -75,14 +77,16 @@ namespace SynMetal_MVC.Models
         public string Email { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [StringLength(100, ErrorMessageResourceType = typeof(ERRMSG.ERRMSG),
+            ErrorMessageResourceName = "StringLength", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Password", ResourceType = typeof(ResourceFiles.Resources))]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Display(Name = "ConPassword", ResourceType = typeof(ResourceFiles.Resources))]
+        [Compare("Password",
+            ErrorMessageResourceType = typeof(ERRMSG.ERRMSG), ErrorMessageResourceName = "PassWordCon")]
         public string ConfirmPassword { get; set; }
     }
 
@@ -94,14 +98,16 @@ namespace SynMetal_MVC.Models
         public string Email { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [StringLength(100, ErrorMessageResourceType = typeof(ERRMSG.ERRMSG),
+            ErrorMessageResourceName = "StringLength", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Password", ResourceType = typeof(ResourceFiles.Resources))]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Display(Name = "ConPassword", ResourceType = typeof(ResourceFiles.Resources))]
+        [Compare("Password", 
+            ErrorMessageResourceType = typeof(ERRMSG.ERRMSG), ErrorMessageResourceName = "PassWordCon")]
         public string ConfirmPassword { get; set; }
 
         public string Code { get; set; }

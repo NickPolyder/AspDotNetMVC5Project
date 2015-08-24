@@ -70,6 +70,42 @@ namespace ResourceFiles {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Κατηγορία.
+        /// </summary>
+        public static string Category {
+            get {
+                return ResourceManager.GetString("Category", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Κωδικός.
+        /// </summary>
+        public static string Code {
+            get {
+                return ResourceManager.GetString("Code", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Επιβεβαίωση νέου  κωδικού.
+        /// </summary>
+        public static string ConNewPassword {
+            get {
+                return ResourceManager.GetString("ConNewPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Επιβεβαίωση κωδικού πρόσβασης.
+        /// </summary>
+        public static string ConPassword {
+            get {
+                return ResourceManager.GetString("ConPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Επικοινωνία.
         /// </summary>
         public static string ContactLink {
@@ -79,11 +115,92 @@ namespace ResourceFiles {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Τωρινός κωδικός πρόσβασης.
+        /// </summary>
+        public static string CurrentPassword {
+            get {
+                return ResourceManager.GetString("CurrentPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Περιγραφή.
+        /// </summary>
+        public static string Description {
+            get {
+                return ResourceManager.GetString("Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Σφάλμα.
+        /// </summary>
+        public static string Error {
+            get {
+                return ResourceManager.GetString("Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ένα σφάλμα προέκυψε καθώς δουλεύαμε πάνω στο αίτημα σας.
+        /// </summary>
+        public static string ErrorMain {
+            get {
+                return ResourceManager.GetString("ErrorMain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Όνομα αρχείου.
+        /// </summary>
+        public static string FileName {
+            get {
+                return ResourceManager.GetString("FileName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Συνεταιριστική Μεταλλοτεχνουργών Λαρίσης &amp; Περιχώρων Α.Ε.
+        /// </summary>
+        public static string FooterString {
+            get {
+                return ResourceManager.GetString("FooterString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Αρχική.
         /// </summary>
         public static string HomeLink {
             get {
                 return ResourceManager.GetString("HomeLink", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Κλειδώθηκες απ&apos; έξω.
+        /// </summary>
+        public static string LockedOut {
+            get {
+                return ResourceManager.GetString("LockedOut", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Αυτός ο λογαριασμός κλειδώθηκε, παρακαλώ προσπαθήστε ξανά αργότερα.
+        /// </summary>
+        public static string LockedOutMain {
+            get {
+                return ResourceManager.GetString("LockedOutMain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Χρησιμοποίησε έναν τοπικό λογαριασμό για να συνδεθείς.
+        /// </summary>
+        public static string Login {
+            get {
+                return ResourceManager.GetString("Login", resourceCulture);
             }
         }
         
@@ -106,11 +223,92 @@ namespace ResourceFiles {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Νέος κωδικός.
+        /// </summary>
+        public static string NewPassword {
+            get {
+                return ResourceManager.GetString("NewPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Κωδικός πρόσβασης.
+        /// </summary>
+        public static string Password {
+            get {
+                return ResourceManager.GetString("Password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Κατηγορίες Pdf.
+        /// </summary>
+        public static string PDFCat {
+            get {
+                return ResourceManager.GetString("PDFCat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Αριθμός τηλεφώνου.
+        /// </summary>
+        public static string PhoneNumber {
+            get {
+                return ResourceManager.GetString("PhoneNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Φωτογραφία.
+        /// </summary>
+        public static string Photo {
+            get {
+                return ResourceManager.GetString("Photo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Κατηγορία προϊόντος.
+        /// </summary>
+        public static string ProdCategory {
+            get {
+                return ResourceManager.GetString("ProdCategory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Όνομα Προϊόντος.
+        /// </summary>
+        public static string ProdName {
+            get {
+                return ResourceManager.GetString("ProdName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Προϊόντα.
         /// </summary>
         public static string ProductLink {
             get {
                 return ResourceManager.GetString("ProductLink", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Δημιούργησε έναν νέο λογαριασμό.
+        /// </summary>
+        public static string Register {
+            get {
+                return ResourceManager.GetString("Register", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Κανε έγγραφη σαν νέος χρήστης.
+        /// </summary>
+        public static string RegisterAs {
+            get {
+                return ResourceManager.GetString("RegisterAs", resourceCulture);
             }
         }
         
@@ -124,11 +322,38 @@ namespace ResourceFiles {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Θυμήσου με ?.
+        /// </summary>
+        public static string RememberMe {
+            get {
+                return ResourceManager.GetString("RememberMe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Χρησιμοποίησε κάποιον εξωτερικό σου λογαριασμό.
+        /// </summary>
+        public static string ServiceLogin {
+            get {
+                return ResourceManager.GetString("ServiceLogin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ΣΥΝ/ΚΗ ΜΕΤ/ΡΓΩΝ Λάρισης &amp; Περιχώρων Α.Ε.
         /// </summary>
         public static string SiteName {
             get {
                 return ResourceManager.GetString("SiteName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Όνομα Χρήστη.
+        /// </summary>
+        public static string UserName {
+            get {
+                return ResourceManager.GetString("UserName", resourceCulture);
             }
         }
         

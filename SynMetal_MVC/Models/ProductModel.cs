@@ -15,16 +15,21 @@ namespace SynMetal_MVC.Models
         [Key]
         public virtual int ProductId { get; set; }
         [Required]
-        [Display(Name ="Product Name")]
-        [StringLength(30,MinimumLength = 2,ErrorMessage ="The Name must be from 2 to 30 length")]
-        [RegularExpression(Variables.RegexForNames, ErrorMessage ="Name Must be a string in range of A-Z , a-z , 0-9 , '-', '_'")]
+        [Display(ResourceType =typeof(ResourceFiles.Resources),Name = "ProdName")]
+        [StringLength(30,MinimumLength = 2,
+            ErrorMessageResourceType = typeof(ERRMSG.ERRMSG), ErrorMessageResourceName = "StringMinMax")]
+        [RegularExpression(Variables.RegexForNames, 
+            ErrorMessageResourceType = typeof(ERRMSG.ERRMSG), ErrorMessageResourceName = "StringRegex")]
         public virtual string Name { get; set; }
-        
+        [Display(ResourceType = typeof(ResourceFiles.Resources), Name = "Description")]
         [DataType(DataType.MultilineText)]
-        [RegularExpression(Variables.RegexForNames, ErrorMessage = "Description Must be a string in range of A-Z , a-z , 0-9 , '-', '_'")]
+        [RegularExpression(Variables.RegexForNames,
+            ErrorMessageResourceType = typeof(ERRMSG.ERRMSG), ErrorMessageResourceName = "StringRegex")]
         public virtual string Description { get; set; }
+        [Display(ResourceType = typeof(ResourceFiles.Resources), Name = "Photo")]
         public virtual PhotoFile Photo { get; set; }
         [Required]
+        [Display(ResourceType = typeof(ResourceFiles.Resources), Name = "ProdCategory")]
         public virtual ProductCategory Category { get; set; }
     }
 
@@ -34,9 +39,11 @@ namespace SynMetal_MVC.Models
         [Key]
         public virtual int CategoryId { get; set; }
         [Required]
-        [Display(Name = "Product Category")]
-        [StringLength(30, MinimumLength = 2, ErrorMessage = "The Name must be from 2 to 30 length")]
-        [RegularExpression(Variables.RegexForNames, ErrorMessage = "Name Must be a string in range of A-Z , a-z , 0-9 , '-', '_'")]
+        [Display(ResourceType = typeof(ResourceFiles.Resources), Name = "ProdCategory")]
+        [StringLength(30, MinimumLength = 2, 
+            ErrorMessageResourceType = typeof(ERRMSG.ERRMSG), ErrorMessageResourceName = "StringMinMax")]
+        [RegularExpression(Variables.RegexForNames,
+            ErrorMessageResourceType = typeof(ERRMSG.ERRMSG), ErrorMessageResourceName = "StringRegex")]
         public virtual string Name { get; set; }
     }
 

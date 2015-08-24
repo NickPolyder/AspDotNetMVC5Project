@@ -28,7 +28,18 @@ namespace SynMetal_MVC.Controllers
                 result[i].Category = db.ProdCategories.Find(prod.ToList()[i].Category.CategoryId);
                 i++;
             }
+            ViewBag.Categories = new SelectList(db.ProdCategories, "CategoryId", "Name");
             return View(result);
+        }
+
+        public ActionResult getProductsBy(int? id)
+        {
+            System.Threading.Thread.Sleep(5000);
+
+            List<Product> products;
+            products = Search.ByCategory(id);
+            
+            return PartialView("Partial/_ProductView",products);
         }
 
         // GET: Products/Details/5
@@ -480,6 +491,10 @@ namespace SynMetal_MVC.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Product product = db.Products.Find(id);
+            if(product.Photo !=null)
+            {
+                PhotoHelper.DeletePhoto(product.Photo.PhotoId, Server, false);
+            }
             db.Products.Remove(product);
             db.SaveChanges();
             return RedirectToAction("Index");

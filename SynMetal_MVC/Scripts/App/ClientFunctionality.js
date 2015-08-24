@@ -12,18 +12,6 @@ $("a[data-name=DelPhoto]").click(function (event) {
         }
 });
 
-$("a[data-name=DelPDF]").click(function (event) {
-    var $input = $(this);
-    event.preventDefault();
-    if (confirm("Are you sure you want to delete this PDF?")) {
-        var input = $input.attr("data-id");
-        $("#UploadPhotoDiv").load('/PdfFiles/CreateUploadForm');
-        $("#results").css("display", "block");
-        $('#results').load('/PdfFiles/DeletePDF/' + input);
-
-    }
-});
-
 $("#sidemenu li").click(function () {
     var $li = $(this);
     $("#sidemenu li").removeClass("active");
@@ -45,10 +33,37 @@ $("a[data-name=Checked]").click(function (event) {
     $("#Target_Results").load("/PdfFiles/getPDFbyCategory/"+$input.attr("data-id"));
 
 });
+$("#Categories").addClass("form-control").attr("data-dd", "CheckIt");
+
+$("#Categories[data-dd=CheckIt").change(function () {
+    var $put = $(this);
+    //$("#TargetArea").load("/Products/getProductsBy/" + $put.val(), function (status) {
+    //    if(status == "error" || status == "parsererror")
+    //    {
+    //        alert("Something happened");
+    //    }
+      
+    //});
+    $.ajax({
+        url: "/Products/getProductsBy/" + $put.val(),
+        data: null,
+        beforeSend: function () {
+            $("#TargetArea").empty().append('<img src="/Content/img/loading_spinner.gif" alt="Loading" style="margin: 0 auto; padding:0 auto;" />');
+        },
+        complete: function () {
+           // $("#TargetArea").empty().append("Ready!!");
+        },
+        error: function () {
+            $("#TargetArea").empty().append("Sorry we had a problem!");
+        },
+        success: function (data) {
+
+            $("#TargetArea").empty().append(data);
+        }
+    });
+});
 
 
-
-$("img[data-photo=true]").width("30%").css("float", "right");
 
 $("#ProdCategories").addClass("form-control");
 $("#PDFCategories").addClass("form-control");

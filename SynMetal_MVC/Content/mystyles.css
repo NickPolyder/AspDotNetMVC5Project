@@ -1,0 +1,27 @@
+﻿.margin-right
+{
+    margin-right: 10px;
+}
+.margin-left
+{
+    margin-left:10px;
+}
+.padding-left{
+    padding-left: 10px;
+}
+.padding-right{
+    padding-right: 10px;
+}
+.img-data
+{
+    width: 30%;
+    height: auto;
+    max-width: 600px;
+    max-height: 300px;
+    margin: 0 auto;
+
+}
+.mycontainer{
+    padding: 0 5px;
+
+}

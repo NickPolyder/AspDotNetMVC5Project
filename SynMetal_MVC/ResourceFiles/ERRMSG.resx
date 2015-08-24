@@ -117,106 +117,25 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AboutLink" xml:space="preserve">
-    <value>Για εμάς</value>
+  <data name="NewPassComp" xml:space="preserve">
+    <value>Ο νέος κωδικός πρόσβασης δεν είναι ίδιος με τον κωδικό επιβεβαίωσης</value>
   </data>
-  <data name="Code" xml:space="preserve">
-    <value>Κωδικός</value>
+  <data name="PassWord" xml:space="preserve">
+    <value />
   </data>
-  <data name="ConPassword" xml:space="preserve">
-    <value>Επιβεβαίωση κωδικού πρόσβασης</value>
+  <data name="PassWordCon" xml:space="preserve">
+    <value>Η επιβεβαίωση κωδικού πρέπει να είναι ίδια με τον κωδικό</value>
   </data>
-  <data name="ContactLink" xml:space="preserve">
-    <value>Επικοινωνία</value>
+  <data name="StringLength" xml:space="preserve">
+    <value>To πεδίο {0} πρέπει να είναι τουλάχιστον {2} χαρακτήρες</value>
   </data>
-  <data name="Error" xml:space="preserve">
-    <value>Σφάλμα</value>
+  <data name="StringMinMax" xml:space="preserve">
+    <value>Το πεδίο {0} πρέπει να είναι μεταξύ {1} και {2}</value>
   </data>
-  <data name="ErrorMain" xml:space="preserve">
-    <value>Ένα σφάλμα προέκυψε καθώς δουλεύαμε πάνω στο αίτημα σας</value>
-  </data>
-  <data name="FooterString" xml:space="preserve">
-    <value>Συνεταιριστική Μεταλλοτεχνουργών Λαρίσης &amp; Περιχώρων Α.Ε</value>
-  </data>
-  <data name="HomeLink" xml:space="preserve">
-    <value>Αρχική</value>
-  </data>
-  <data name="LockedOut" xml:space="preserve">
-    <value>Κλειδώθηκες απ' έξω</value>
-  </data>
-  <data name="LockedOutMain" xml:space="preserve">
-    <value>Αυτός ο λογαριασμός κλειδώθηκε, παρακαλώ προσπαθήστε ξανά αργότερα</value>
-  </data>
-  <data name="Login" xml:space="preserve">
-    <value>Χρησιμοποίησε έναν τοπικό λογαριασμό για να συνδεθείς</value>
-  </data>
-  <data name="LogInLink" xml:space="preserve">
-    <value>Είσοδος</value>
-  </data>
-  <data name="LogOutLink" xml:space="preserve">
-    <value>Έξοδος</value>
-  </data>
-  <data name="Password" xml:space="preserve">
-    <value>Κωδικός πρόσβασης</value>
-  </data>
-  <data name="ProductLink" xml:space="preserve">
-    <value>Προϊόντα</value>
-  </data>
-  <data name="Register" xml:space="preserve">
-    <value>Δημιούργησε έναν νέο λογαριασμό</value>
-  </data>
-  <data name="RegisterAs" xml:space="preserve">
-    <value>Κανε έγγραφη σαν νέος χρήστης</value>
-  </data>
-  <data name="RegisterLink" xml:space="preserve">
-    <value>Έγγραφη</value>
-  </data>
-  <data name="RememberMe" xml:space="preserve">
-    <value>Θυμήσου με ?</value>
-  </data>
-  <data name="ServiceLogin" xml:space="preserve">
-    <value>Χρησιμοποίησε κάποιον εξωτερικό σου λογαριασμό</value>
-  </data>
-  <data name="SiteName" xml:space="preserve">
-    <value>ΣΥΝ/ΚΗ ΜΕΤ/ΡΓΩΝ Λάρισης &amp; Περιχώρων Α.Ε</value>
+  <data name="StringRegex" xml:space="preserve">
+    <value>Το πεδίο {0} πρέπει να έχει σύμβολα αριθμούς και τα '-','_'</value>
   </data>
   <data name="UserName" xml:space="preserve">
-    <value>Όνομα Χρήστη</value>
-  </data>
-  <data name="Welcome" xml:space="preserve">
-    <value>Κάλως ήρθες</value>
-  </data>
-  <data name="Category" xml:space="preserve">
-    <value>Κατηγορία</value>
-  </data>
-  <data name="ConNewPassword" xml:space="preserve">
-    <value>Επιβεβαίωση νέου  κωδικού</value>
-  </data>
-  <data name="CurrentPassword" xml:space="preserve">
-    <value>Τωρινός κωδικός πρόσβασης</value>
-  </data>
-  <data name="Description" xml:space="preserve">
-    <value>Περιγραφή</value>
-  </data>
-  <data name="FileName" xml:space="preserve">
-    <value>Όνομα αρχείου</value>
-  </data>
-  <data name="NewPassword" xml:space="preserve">
-    <value>Νέος κωδικός</value>
-  </data>
-  <data name="PDFCat" xml:space="preserve">
-    <value>Κατηγορίες Pdf</value>
-  </data>
-  <data name="PhoneNumber" xml:space="preserve">
-    <value>Αριθμός τηλεφώνου</value>
-  </data>
-  <data name="Photo" xml:space="preserve">
-    <value>Φωτογραφία</value>
-  </data>
-  <data name="ProdCategory" xml:space="preserve">
-    <value>Κατηγορία προϊόντος</value>
-  </data>
-  <data name="ProdName" xml:space="preserve">
-    <value>Όνομα Προϊόντος</value>
+    <value>Μη συμβατό όνομα χρήστη</value>
   </data>
 </root>

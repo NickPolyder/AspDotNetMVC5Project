@@ -186,7 +186,13 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Models\SynMetalEntities.cs" />
+    <Compile Include="Models\ViewMod\HomeIndexView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResourceFiles\ERRMSG.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ERRMSG.resx</DependentUpon>
+    </Compile>
     <Compile Include="ResourceFiles\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -197,6 +203,8 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\img\loading_spinner.gif" />
+    <Content Include="Content\mystyles.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -282,6 +290,7 @@
     <Content Include="Views\PdfFiles\Partial\_PdfUpEdDel.cshtml" />
     <Content Include="Views\Home\Partial\_ForUs.cshtml" />
     <Content Include="Views\PdfFiles\Partial\_PdfPerCategory.cshtml" />
+    <Content Include="Views\Products\Partial\_ProductView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -297,6 +306,11 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="ResourceFiles\ERRMSG.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ERRMSG.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>ERRMSG</CustomToolNamespace>
+    </EmbeddedResource>
     <EmbeddedResource Include="ResourceFiles\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

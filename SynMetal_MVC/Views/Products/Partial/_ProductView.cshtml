@@ -1,0 +1,60 @@
+﻿@model IEnumerable<SynMetal_MVC.Models.Product>
+    @{
+
+
+    }
+    <table class="table-hover">
+        <tr>
+            <th class="margin-left margin-right padding-left padding-right text-center">
+                @Html.DisplayNameFor(model => model.Photo)
+            </th>
+            <th class="margin-left margin-right padding-left padding-right text-center">
+                @Html.DisplayNameFor(model => model.Category)
+            </th>
+            <th class="margin-left margin-right padding-left padding-right text-center">
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th class="margin-left margin-right padding-left padding-right text-center">
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th></th>
+        </tr>
+        @if (Model != null)
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td class="margin-left margin-right padding-left padding-right">
+                        @*   @Html.DisplayFor(modelItem => item.Photo)*@
+                        @if (item.Photo != null)
+                    {
+
+                            <a href="@Url.Content(item.Photo.FilePath)" target="_blank">
+                                <img  class="img-data img-responsive media-object margin-right" src="@Url.Content(item.Photo.FilePath)" alt="@item.Photo.Name" data-photo="true" />
+                            </a>
+
+                        }
+                    </td>
+                    <td class="margin-left margin-right padding-left padding-right">
+                        @item.Category.Name
+                    </td>
+                    <td class="margin-left margin-right padding-left padding-right">
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td class="margin-left margin-right padding-left padding-right">
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td class="margin-left margin-right padding-left padding-right">
+                        @Html.ActionLink("Details", "Details", new { id = item.ProductId })
+                        @if (User.IsInRole("Administrator") || User.IsInRole("Moderator"))
+                    {
+                            @:|
+                            @Html.ActionLink("Edit", "Edit", new { id = item.ProductId }) @:|
+                            @Html.ActionLink("Delete", "Delete", new { id = item.ProductId })
+                        }
+                    </td>
+                </tr>
+            }
+        }
+    </table>
+
