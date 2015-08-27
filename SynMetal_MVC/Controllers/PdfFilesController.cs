@@ -17,9 +17,40 @@ namespace SynMetal_MVC.Controllers
         private SynMetalEntities db = new SynMetalEntities();
 
         // GET: PdfFiles
-        public ActionResult Index()
+        public ActionResult Index(int? id)
         {
-            return View(db.PdfFiles.ToList());
+
+            List<PdfFile> result;
+            if(id == null)
+            {
+                result = db.PdfFiles.ToList();
+                ViewBag.PdfCategories = new SelectList(db.PdfCategories, "CategoryId", "Name");
+
+            }
+            else
+            {
+                result = Search.ByPdfCategory(id);
+                if(Regex.IsMatch(id.ToString(),Variables.RegexForNumbers))
+                { 
+                ViewBag.PdfCategories = new SelectList(db.PdfCategories, "CategoryId", "Name",db.PdfCategories.Find(id).CategoryId);
+                }
+                else
+                {
+                    ViewBag.PdfCategories = new SelectList(db.PdfCategories, "CategoryId", "Name");
+                }
+            }
+            
+            return View(result);
+        }
+        
+        public ActionResult getPdfsBy(int? id)
+        {
+            System.Threading.Thread.Sleep(5000);
+
+            List<PdfFile> PdfFile;
+            PdfFile = Search.ByPdfCategory(id);
+
+            return PartialView("Partial/_PdfPerCategory", PdfFile);
         }
 
         // GET: PdfFiles/Details/5

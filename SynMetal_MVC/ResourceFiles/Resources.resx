@@ -219,4 +219,10 @@
   <data name="ProdName" xml:space="preserve">
     <value>Όνομα Προϊόντος</value>
   </data>
+  <data name="NewsName" xml:space="preserve">
+    <value>Θέμα - Όνομα νέου</value>
+  </data>
+  <data name="NewsLink" xml:space="preserve">
+    <value>Νέα</value>
+  </data>
 </root>

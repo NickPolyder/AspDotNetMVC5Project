@@ -14,6 +14,7 @@ namespace SynMetal_MVC.Models
         public DbSet<PhotoFile> Photos { get; set; }
         public DbSet<PdfFile> PdfFiles { get; set; }
         public DbSet<PdfCategory> PdfCategories { get; set; }
+        public DbSet<NewsModel> News { get; set; }
         public SynMetalEntities():base("DefaultConnection")
         { }
     }

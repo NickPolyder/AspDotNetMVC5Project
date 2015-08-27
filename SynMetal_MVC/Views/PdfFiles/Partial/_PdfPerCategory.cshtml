@@ -3,18 +3,18 @@
 @{
 
 }
-<table class="table">
+<table class="table table-hover">
     <tr>
-        <th>
+        <th class="margin-left margin-right padding-left padding-right text-center">
             Download File
         </th>
-        <th>
+        <th class="margin-left margin-right padding-left padding-right text-center">
             @Html.DisplayNameFor(model => model.Category)
         </th>
-        <th>
+        <th class="margin-left margin-right padding-left padding-right text-center">
             @Html.DisplayNameFor(model => model.FileName)
         </th>
-        <th>
+        <th class="margin-left margin-right padding-left padding-right text-center">
             @Html.DisplayNameFor(model => model.Description)
         </th>
         <th></th>
@@ -23,20 +23,20 @@
     @foreach (var item in Model)
     {
         <tr>
-            <td>
+            <td class="margin-left margin-right padding-left padding-right text-center">
                 <a class="btn btn-info" target="_blank" href="@Url.Content(item.FilePath)">Open File</a>
             </td>
-            <td>
+            <td class="margin-left margin-right padding-left padding-right text-center">
                 @Html.DisplayFor(modelItem => item.Category.Name)
             </td>
-            <td>
+            <td class="margin-left margin-right padding-left padding-right text-center">
                 @Html.DisplayFor(modelItem => item.FileName)
             </td>
-            <td>
+            <td class="margin-left margin-right padding-left padding-right text-center">
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
 
-            <td>
+            <td class="margin-left margin-right padding-left padding-right text-center">
                 @if (User.IsInRole("Administrator") || User.IsInRole("Moderator"))
                 {
                     @Html.ActionLink("Edit", "Edit", new { id = item.PdfId }) @:|

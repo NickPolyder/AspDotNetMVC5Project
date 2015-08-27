@@ -3,7 +3,7 @@
 
 
     }
-    <table class="table-hover">
+    <table class="table table-hover">
         <tr>
             <th class="margin-left margin-right padding-left padding-right text-center">
                 @Html.DisplayNameFor(model => model.Photo)
@@ -24,7 +24,7 @@
             foreach (var item in Model)
             {
                 <tr>
-                    <td class="margin-left margin-right padding-left padding-right">
+                    <td class="margin-left margin-right padding-left padding-right text-center">
                         @*   @Html.DisplayFor(modelItem => item.Photo)*@
                         @if (item.Photo != null)
                     {
@@ -35,16 +35,16 @@
 
                         }
                     </td>
-                    <td class="margin-left margin-right padding-left padding-right">
+                    <td class="margin-left margin-right padding-left padding-right text-center">
                         @item.Category.Name
                     </td>
-                    <td class="margin-left margin-right padding-left padding-right">
+                    <td class="margin-left margin-right padding-left padding-right text-center">
                         @Html.DisplayFor(modelItem => item.Name)
                     </td>
-                    <td class="margin-left margin-right padding-left padding-right">
+                    <td class="margin-left margin-right padding-left padding-right text-center">
                         @Html.DisplayFor(modelItem => item.Description)
                     </td>
-                    <td class="margin-left margin-right padding-left padding-right">
+                    <td class="margin-left margin-right padding-left padding-right text-center">
                         @Html.ActionLink("Details", "Details", new { id = item.ProductId })
                         @if (User.IsInRole("Administrator") || User.IsInRole("Moderator"))
                     {

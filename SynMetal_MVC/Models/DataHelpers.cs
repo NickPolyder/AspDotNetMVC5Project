@@ -24,7 +24,7 @@ namespace SynMetal_MVC.Models
     static class Search
     {
         static SynMetalEntities db = new SynMetalEntities();
-        public static List<Product> ByCategory(int? id)
+        public static List<Product> ByProdCategory(int? id)
         {
             List<Product> products;
             if (id != null && Regex.IsMatch(id.ToString(), Variables.RegexForNumbers))
@@ -34,24 +34,55 @@ namespace SynMetal_MVC.Models
                            where prd.Category.CategoryId == cat.CategoryId
                            select prd;
                 products = prod.ToList();
-                for (int i = 0; i < products.Count; i++)
-                {
-                    products[i].Category = cat;
-                }
+                //for (int i = 0; i < products.Count; i++)
+                //{
+                //    products[i].Category = cat;
+                //}
 
             }
             else
             {
                 var prod = db.Products;
                 products = prod.ToList();
-                for (int i = 0; i < prod.Count(); i++)
-                {
-                    products[i].Category = db.ProdCategories.Find(products[i].Category.CategoryId);
-                }
+                //for (int i = 0; i < prod.Count(); i++)
+                //{
+                //    products[i].Category = db.ProdCategories.Find(products[i].Category.CategoryId);
+                //}
 
 
             }
             return products;
+        }
+
+        public static List<PdfFile> ByPdfCategory(int? id)
+        {
+            List<PdfFile> PdfFiles;
+            if (id != null && Regex.IsMatch(id.ToString(), Variables.RegexForNumbers))
+            {
+                var cat = db.PdfCategories.Find(id);
+                var prod = from prd in db.PdfFiles
+                           where prd.Category.CategoryId == cat.CategoryId
+                           select prd;
+                PdfFiles = prod.ToList();
+                //for (int i = 0; i < PdfFiles.Count; i++)
+                //{
+                //    PdfFiles[i].Category = cat;
+                //}
+
+            }
+            else
+            {
+                var prod = db.PdfFiles;
+                PdfFiles = prod.ToList();
+                //for (int i = 0; i < prod.Count(); i++)
+                //{
+                //    PdfFiles[i].Category = db.PdfCategories.Find(PdfFiles[i].Category.CategoryId);
+                //}
+
+
+            }
+            return PdfFiles;
+
         }
     }
 
@@ -169,7 +200,6 @@ namespace SynMetal_MVC.Models
 
 
     }
-
 
     static class PhotoHelper
     {
@@ -289,7 +319,6 @@ namespace SynMetal_MVC.Models
 
     }
 
-
     static class DataHelpers
     {
         static SynMetalEntities StoreDB = new SynMetalEntities();
@@ -317,6 +346,15 @@ namespace SynMetal_MVC.Models
             StoreDB.SaveChanges();
             StoreDB.Database.Connection.Close();
             #endregion
+        }
+
+        public static void CreateNews()
+        {
+            for (int i = 0; i < 100; i++)
+            {
+                StoreDB.News.Add(new NewsModel { Name = "New" + i, Description = "mplamplamplamplampla " + i + " mplamplampla" });
+            }
+            StoreDB.SaveChanges();
         }
     }
 }

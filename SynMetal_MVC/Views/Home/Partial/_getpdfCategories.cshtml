@@ -1,0 +1,13 @@
+﻿@model IEnumerable<SynMetal_MVC.Models.PdfCategory>
+
+@{ 
+
+}
+
+@foreach (SynMetal_MVC.Models.PdfCategory pdf in Model)
+{
+  
+
+    <li>@Html.ActionLink(pdf.Name, "Index", "PdfFiles", new { id = pdf.CategoryId }, null)</li>
+
+}

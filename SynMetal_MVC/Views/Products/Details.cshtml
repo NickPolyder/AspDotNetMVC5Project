@@ -24,11 +24,17 @@
                 </tr>
             </table>
      
- 
-   
+ @if (Model.Photo != null)
+ {
+
                     <div class="row ">
                         <div class="col-sm-6 col-md-4 ">
-                            <strong> @Html.DisplayNameFor(model => model.Photo)</strong>
+                            <strong>
+                          
+                                <span>  @Html.DisplayNameFor(model => model.Photo) </span>
+                           
+                           
+                            </strong>
                             </div>
                             <div class="col-sm-6 col-md-4 ">
                                 <div class="thumbnail" id="results">
@@ -39,10 +45,11 @@
                                     </div>
                                 </div>
                             </div>
+                           
                         </div>
-            
+}
     </div>
-    
+
 </div>
 <p>
 @if (User.IsInRole("Administrator") || User.IsInRole("Moderator"))

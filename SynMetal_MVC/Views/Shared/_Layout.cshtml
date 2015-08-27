@@ -22,10 +22,52 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink(ResourceFiles.Resources.HomeLink, "Index", "Home")</li>
-                    <li>@Html.ActionLink(ResourceFiles.Resources.AboutLink, "About", "Home")</li>
+                    <li class="dropdown btn-group">
+                        @Html.ActionLink(ResourceFiles.Resources.AboutLink, "About", "Home", null, htmlAttributes: new { @class = "btn ", @type = "button" })
+                        <a aria-expanded="false" aria-haspopup="true"
+                           role="button" data-toggle="dropdown" type="button"
+                           class="btn dropdown-toggle" href="#">
+                            <span class="caret"></span>
+                            <span class="sr-only">Toggle Dropdown</span>
+                        </a>
+                        <ul id="putCategories" class="dropdown-menu nav">
+                            <li>@Html.ActionLink("Show All Files", "Index", "PdfFiles")</li>
+                            <li class="divider" role="separator"></li>
+
+                        </ul>
+
+                    </li>
                     <li>@Html.ActionLink(ResourceFiles.Resources.ContactLink, "Contact", "Home")</li>
-                    <li>@Html.ActionLink(ResourceFiles.Resources.ProductLink,"Index","Products")</li>
+                    <li>@Html.ActionLink(ResourceFiles.Resources.ProductLink, "Index", "Products")</li>
+                    <li>@Html.ActionLink(ResourceFiles.Resources.NewsLink,"Index","News")</li>
+                    <li class="dropdown btn-group">
+                       
+                        <a aria-expanded="false" aria-haspopup="true"
+                           role="button" data-toggle="dropdown" type="button"
+                           class="btn dropdown-toggle" href="#">
+                            <span class="glyphicon glyphicon-search"></span>
+                            <span class="caret"></span>
+                            <span class="sr-only">Toggle Dropdown</span>
+                        </a>
+                        <ul class="dropdown-menu nav search">
+                            <li class="SearchForm ">
+                                @using (Html.BeginForm("Search", "Home", null, FormMethod.Get))
+                            {
+                                <div class="input-group">
+                                    <input type="text" id="SearchText" name="SearchText" class="form-control" placeholder="Search for...">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default" type="submit"> <span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                                    </span>
+                                </div>
+                            }
+                        </li>
+
+                        </ul>
+
+                    </li>
+                   
                 </ul>
+                
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
@@ -40,6 +82,7 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/clientFunc")
     @RenderSection("scripts", required: false)
 </body>
 </html>

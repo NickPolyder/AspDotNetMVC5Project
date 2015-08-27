@@ -232,6 +232,24 @@ namespace ResourceFiles {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Νέα.
+        /// </summary>
+        public static string NewsLink {
+            get {
+                return ResourceManager.GetString("NewsLink", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Θέμα - Όνομα νέου.
+        /// </summary>
+        public static string NewsName {
+            get {
+                return ResourceManager.GetString("NewsName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Κωδικός πρόσβασης.
         /// </summary>
         public static string Password {

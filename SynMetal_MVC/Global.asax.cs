@@ -19,6 +19,7 @@ namespace SynMetal_MVC
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+           
         }
         private void Application_Error(object sender, EventArgs e)
         {

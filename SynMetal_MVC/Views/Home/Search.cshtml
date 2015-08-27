@@ -1,0 +1,128 @@
+﻿@using PagedList.Mvc;
+@model PagedList.IPagedList<SynMetal_MVC.Models.ViewMod.SearchView>
+
+
+@{
+    var SearchText = ViewBag.Search != null ? ViewBag.Search : "";
+    if(SearchText != "")
+    {
+        ViewBag.Title = "You Searched for ' " + SearchText+" '";
+    }
+    else
+    {
+        ViewBag.Title = "Search ";
+    }
+
+    var Counts = ViewBag.CountRes != null ? ViewBag.CountRes : 0;
+
+}
+<h2>@ViewBag.Title</h2>
+@if (Model != null)
+{
+<br /><div class="text-center">
+  
+
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+          @Html.PagedListPager(Model, (page) => Url.Action("Search", new { page, SearchText }))
+       
+
+   </div>
+<br />
+
+<table class="table">
+  
+    <tr>
+       <th> results @(Model.PageNumber *Model.Count) of @Counts</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+
+        if (item.News != null)
+        {
+            <tr>
+                <td>
+                    <table class="table">
+                        <tr>
+                            <th>@item.News.Name</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                @item.News.Description
+                            </td>
+                            <td>
+                                @Html.ActionLink("Details","Details","News", new { id=item.News.NewsId },null)
+                            </td>
+                        </tr>
+                    </table>
+
+                </td>
+            </tr>
+
+        }
+
+
+        if (item.Products != null)
+        {
+            <tr>
+                <td>
+                    
+                        <table class="table">
+                            <tr>
+                                <th>@item.Products.Name</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @item.Products.Description
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Details", "Details", "Products", new { id = item.Products.ProductId }, null)
+                                </td>
+                            </tr>
+                        </table>
+
+
+
+                   
+                </td>
+            </tr>
+        }
+
+        if (item.Files != null)
+        {
+            <tr>
+                <td>
+
+                    <table class="table">
+                        <tr>
+                            <th>@item.Files.FileName</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                @item.Files.Description
+                            </td>
+                            <td>
+                                @Html.ActionLink("Details", "Details", "Files", new { id = item.Files.PdfId }, null)
+                            </td>
+                        </tr>
+                    </table>
+
+
+
+                    
+                </td>
+            </tr>
+        }
+    }
+
+</table>
+
+    <br /><div class="text-center">
+
+
+        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+        @Html.PagedListPager(Model, (page) => Url.Action("Search", new { page, SearchText }))
+
+
+    </div>
+    <br />
+}

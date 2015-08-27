@@ -13,48 +13,21 @@
     @Html.ActionLink("Manage PDF Categories","Index","PdfCategories",null,null)
 </p>
 }
-<table class="table">
-    <tr>
-        <th>
-            Download File
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Category)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FileName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th></th>
-    </tr>
+<dl>
+    <dd>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-           <a class="btn btn-info" target="_blank" href="@Url.Content(item.FilePath)" >Open</a>
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Category.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FileName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
+        <label for="Categories">Narrow By Category</label>
+    </dd>
+    <dd>
+        @Html.DropDownList("PdfCategories", "Show All")
+    </dd>
+</dl>
+<div id="TargetArea" class="table-hover">
+@Html.Partial("Partial/_PdfPerCategory",Model)
 
-        <td>
-            @if (User.IsInRole("Administrator") || User.IsInRole("Moderator"))
-            {
-            @Html.ActionLink("Edit", "Edit", new { id=item.PdfId }) @:|
-             
-            @Html.ActionLink("Delete", "Delete", new { id=item.PdfId }) @:|
-            }
-            @Html.ActionLink("Details", "Details", new { id = item.PdfId })
-        </td>
-    </tr>
+</div>
+@section Scripts {
+    @* @Scripts.Render("~/bundles/jqueryval") *@
+
+   
 }
-
-</table>

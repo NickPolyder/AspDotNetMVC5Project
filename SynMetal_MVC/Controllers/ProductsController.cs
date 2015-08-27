@@ -22,12 +22,7 @@ namespace SynMetal_MVC.Controllers
         {
             var prod = db.Products;
             var result = prod.ToList();
-            int i = 0;
-           while(i < prod.Count())
-            {
-                result[i].Category = db.ProdCategories.Find(prod.ToList()[i].Category.CategoryId);
-                i++;
-            }
+           
             ViewBag.Categories = new SelectList(db.ProdCategories, "CategoryId", "Name");
             return View(result);
         }
@@ -37,7 +32,7 @@ namespace SynMetal_MVC.Controllers
             System.Threading.Thread.Sleep(5000);
 
             List<Product> products;
-            products = Search.ByCategory(id);
+            products = Search.ByProdCategory(id);
             
             return PartialView("Partial/_ProductView",products);
         }

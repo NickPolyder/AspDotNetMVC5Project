@@ -1,0 +1,22 @@
+﻿@using PagedList.Mvc;
+@model PagedList.IPagedList<SynMetal_MVC.Models.NewsModel>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+@if (User.IsInRole("Administrator") || User.IsInRole("Moderator"))
+{
+    @Html.ActionLink("Create New", "Create")
+}
+</p>
+<div id="NewsArea">
+    @Html.Partial("Partial/_NewsShow",Model)
+
+</div>
+@section Scripts{
+  
+
+    }
