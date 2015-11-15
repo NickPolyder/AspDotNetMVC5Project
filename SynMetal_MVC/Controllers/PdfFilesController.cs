@@ -23,7 +23,7 @@ namespace SynMetal_MVC.Controllers
             List<PdfFile> result;
             if(id == null)
             {
-                result = db.PdfFiles.ToList();
+                result = db.PdfFiles.OrderByDescending(k => k.PdfId).ToList();
                 ViewBag.PdfCategories = new SelectList(db.PdfCategories, "CategoryId", "Name");
 
             }
@@ -459,6 +459,7 @@ namespace SynMetal_MVC.Controllers
                 var edit = db.PdfCategories.Find(id);
                 var prod = from pdf in db.PdfFiles
                            where pdf.Category.CategoryId == edit.CategoryId
+                           orderby pdf.PdfId descending
                            select pdf;
                 return PartialView("Partial/_PdfPerCategory",prod);
             }

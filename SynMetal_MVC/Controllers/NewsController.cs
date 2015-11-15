@@ -19,7 +19,7 @@ namespace SynMetal_MVC.Models
         public ActionResult Index(int? page)
         {
 
-            var result = db.News.ToList();
+            var result = db.News.OrderByDescending(k => k.NewsId).ToList();
             int pageSize = 10;
             int pageNumber = (page ?? 1);
 
@@ -28,7 +28,7 @@ namespace SynMetal_MVC.Models
 
         public ActionResult NewsShowPartial(int? page)
         {
-            var result = db.News.ToList();
+            var result = db.News.OrderByDescending(k => k.NewsId).ToList();
             int pageSize = 10;
             int pageNumber = (page ?? 1);
             
@@ -38,7 +38,7 @@ namespace SynMetal_MVC.Models
         }
         public ActionResult getAllNews()
         {
-            var result = db.News.ToList();
+            var result = db.News.OrderByDescending(k => k.NewsId).ToList();
            
 
             return PartialView("Partial/_ShowAllNews", result);

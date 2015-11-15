@@ -1,0 +1,101 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>tries etc</title>
+</head>
+
+<body>
+    @Scripts.Render("~/bundles/jquery")
+    <script type="text/javascript">
+        
+        $(document).ready(function () {
+            var tr = document.getElementById("tryer");
+        
+      var form =  $("#form1").children();
+      form.each(function (index, element) {
+
+          $(element).change(function () {
+              var edit = tr.value.split(',');
+              if(edit != null && edit!="")
+              {
+                  var righton = true;
+                  var i = 0;
+                  for(i=0; i<edit.length; i++)
+                  {
+                      if(edit[i].split('=')[0] == $(this).attr("name"))
+                      {
+                          if ($(this).val() != null && $(this).val() != "")
+                          {
+                              edit[i] = $(this).attr("name") + "=" + $(this).val();
+                          } else {
+                              edit[i] = "";
+                          }
+                          righton = false;
+                      }
+                  }
+                  if(righton)
+                  {
+                      tr.value += "," + $(this).attr("name") + "=" + $(this).val();
+                  } else {
+                      tr.value = "";
+                      var el = false;
+                      for (i = 0; i < edit.length; i++) {
+                          if (edit[i] != null && edit[i] != "")
+                          {
+                              if (el)
+                              {
+                                  tr.value +=","+ edit[i];
+                              } else {
+                                  tr.value += edit[i];
+                                  el = true;
+                              }
+                              
+                              
+                             
+                          }
+                          
+                      }
+                  }
+
+              } else {
+                  tr.value = $(this).attr("name") + "=" + $(this).val();
+              }
+          });
+      });
+    });
+    </script>
+    <div>
+    <form id="form1" name="form1" method="post" action="/">
+        <select id="Gender" name="Gender">
+            <option value="" selected>Pic A Gender</option>
+            <option value="Male" >Male</option>
+            <option value="Female" >Female</option>
+
+        </select>
+        <select id="Races" name="Races">
+            <option value="" selected>Pic A Races</option>
+            <option value="Black">Black</option>
+            <option value="White">White</option>
+
+        </select>
+        <select id="Nation" name="Nation">
+            <option value="" selected>Pic A Nation</option>
+            <option value="Greece">Greece</option>
+            <option value="England">England</option>
+
+        </select>
+        <input type="radio" id="isittrue" name="isittrue" value="YES" /><label for="isittrue">yes</label>
+        <input type="radio" id="isittrue" name="isittrue" value="NO" /><label for="isittrue">no</label>
+        <input type="radio" id="isittrue" name="isittrue" value="" /><label for="isittrue">nothing</label>
+        <input type="text" id="tries" name="tries"/>
+    </form>
+        <input type="text" id="tryer" value="" style="width:400px;"/>
+    </div>
+</body>
+</html>

@@ -14,10 +14,13 @@ namespace SynMetal_MVC.Models
     static class Variables
     {
         public const string RegexForNames = @"[A-Za-z0-9'_'\u0391-\u03A9" + "\x5C\x3B\x3A\x2E\x2C\x28\x29\x20" +
-             "\u03B1-\u03C9\x2D\u0386-\u038F\u03AA-\u03AF\u03CA-\u03CF\u0390\u03B0]+";
-        public const string RegexForNumbers = @"[0-9]+";
+             "\u03B1-\u03C9\x2D\u0386-\u038F\u03AA-\u03AF\u03CA-\u03CF\u0390\u03B0]+"; // A-Z a-z 0-9 _ - Α-Ω α-ω κλπ
+        //
+        public const string RegexForNumbers = @"[0-9]+"; // numbers
+        
         public const string pathToSavePhotos = "~/Photos/";
         public const string pathToSavePDFs = "~/PDF/";
+
 
 
     }

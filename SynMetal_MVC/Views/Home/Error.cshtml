@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "Error";
+    var Error = Session["HttpValid"] != null ? Session["HttpValid"].ToString() : "";
+}
+
+<h2>Error</h2>
+
+    <div class="alert alert-danger text-center">
+        <h2>
+            @Error
+        </h2>
+
+    </div>

@@ -2,6 +2,10 @@
 @model PagedList.IPagedList<SynMetal_MVC.Models.NewsModel>
 @{
     ViewBag.Title = "Index";
+    if (TempData["i"] == null)
+    {
+        TempData["i"] = 0;
+    }
 }
 
 <h2>Index</h2>
@@ -16,7 +20,9 @@
     @Html.Partial("Partial/_NewsShow",Model)
 
 </div>
+
 @section Scripts{
   
 
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
     }

@@ -1,63 +1,22 @@
 namespace SynMetal_MVC.Migrations
 {
-
-    using Microsoft.AspNet.Identity;
-    using Microsoft.AspNet.Identity.EntityFramework;
-    using Models;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<ApplicationDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<SynMetal_MVC.Models.SynMetalEntities>
     {
-       
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationsEnabled = false;
+            ContextKey = "SynMetal_MVC.Models.SynMetalEntities";
         }
 
-        protected override void Seed(ApplicationDbContext context)
+        protected override void Seed(SynMetal_MVC.Models.SynMetalEntities context)
         {
-            var roleStore = new RoleStore<IdentityRole>(context);
-            var roleManager = new RoleManager<IdentityRole>(roleStore);
-            #region Roles
-            if (!context.Roles.Any(u => u.Name == "Administrator"))
-            {
-                roleManager.Create(new IdentityRole { Name = "Administrator" });
-
-            }
-            if (!context.Roles.Any(u => u.Name == "Moderator"))
-            {
-                roleManager.Create(new IdentityRole { Name = "Moderator" });
-            }
-            if (!context.Roles.Any(u => u.Name == "SimpleUser"))
-            {
-                roleManager.Create(new IdentityRole { Name = "SimpleUser" });
-            }
-            #endregion
-
-            var store = new UserStore<ApplicationUser>(context);
-            var manager = new UserManager<ApplicationUser>(store);
-            #region Users
-            if (!context.Users.Any(u => u.UserName =="Admin"))
-            {
-             
-                var user = new ApplicationUser { UserName = "Admin" , Email = "Admin@synmetal.gr", EmailConfirmed=true };
-                manager.Create(user, "Adm1n1str@t0r");
-                manager.AddToRole(user.Id, "Administrator");
-            }
-            if (!context.Users.Any(u => u.UserName == "SomeUser@Moderator.com"))
-            {
-              
-                var user = new ApplicationUser { UserName = "User", Email = "SomeUser@Moderator.com", EmailConfirmed = true };
-                manager.Create(user, "M0der@t0r");
-                manager.AddToRole(user.Id, "Moderator");
-            }
-            #endregion
-          
-
-            #region defaults
+            SynMetal_MVC.Models.DataHelpers.CreateCategories();
+            SynMetal_MVC.Models.DataHelpers.CreateNews();
             //  This method will be called after migrating to the latest version.
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
@@ -70,7 +29,6 @@ namespace SynMetal_MVC.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
-            #endregion
         }
     }
 }

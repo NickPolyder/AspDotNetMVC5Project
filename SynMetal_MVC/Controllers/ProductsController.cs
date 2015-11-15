@@ -20,7 +20,7 @@ namespace SynMetal_MVC.Controllers
         // GET: Products
         public ActionResult Index()
         {
-            var prod = db.Products;
+            var prod = db.Products.OrderByDescending(k=> k.ProductId);
             var result = prod.ToList();
            
             ViewBag.Categories = new SelectList(db.ProdCategories, "CategoryId", "Name");

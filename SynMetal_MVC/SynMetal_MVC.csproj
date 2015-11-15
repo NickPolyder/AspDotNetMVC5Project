@@ -186,9 +186,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201508251823571_InitialCreate.cs" />
+    <Compile Include="Migrations\201508251823571_InitialCreate.Designer.cs">
+      <DependentUpon>201508251823571_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\AppCont\Configuration.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\DataHelpers.cs" />
+    <Compile Include="Models\ErrorM.cs" />
     <Compile Include="Models\FileModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -228,6 +234,8 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -312,6 +320,8 @@
     <Content Include="Views\News\Partial\_NewsShow.cshtml" />
     <Content Include="Views\News\Partial\_ShowAllNews.cshtml" />
     <Content Include="Views\Home\Search.cshtml" />
+    <Content Include="Views\Home\Error.cshtml" />
+    <Content Include="Views\Try\index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -327,6 +337,9 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Migrations\201508251823571_InitialCreate.resx">
+      <DependentUpon>201508251823571_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ResourceFiles\ERRMSG.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ERRMSG.Designer.cs</LastGenOutput>

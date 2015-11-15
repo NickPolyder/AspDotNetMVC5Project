@@ -12,6 +12,8 @@ namespace SynMetal_MVC.Models.ViewMod
 
         public List<PdfView> LastPdf { get; set; }
 
+        public List<NewsModel> LastNews { get; set; }
+
         public HomeIndexView()
         {
             lastProduct = new ProductView();

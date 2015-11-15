@@ -1,14 +1,18 @@
 ﻿@using PagedList.Mvc;
 @model PagedList.IPagedList<SynMetal_MVC.Models.NewsModel>
     @*IEnumerable<SynMetal_MVC.Models.NewsModel>*@
-@{
-
-}
 
 <br /><div class="text-center">
     Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
 
-    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+    @Html.PagedListPager(Model, page => Url.Action("NewsShowPartial", new { page }),PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(new AjaxOptions()
+{
+    InsertionMode = InsertionMode.Replace,
+    UpdateTargetId = "NewsArea",
+    AllowCache =false
+
+
+}))
 </div>
 <br />
 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
@@ -51,7 +55,14 @@
 <div class="text-center">
     Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
 
-    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+    @Html.PagedListPager(Model, page => Url.Action("NewsShowPartial","News",new { page }), PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(new AjaxOptions()
+{
+    InsertionMode = InsertionMode.Replace,
+    UpdateTargetId = "NewsArea",
+    AllowCache = false
+
+
+}))
 
 
     </div>

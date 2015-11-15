@@ -16,30 +16,44 @@ namespace SynMetal_MVC.Controllers
     {
         SynMetalEntities db = new SynMetalEntities();
 
+        public ActionResult changes()
+        {
+            Session.Add("NN", 22);
+            return RedirectToAction("Index");
+        }
         public ActionResult Index()
         {
 
             #region Creation of dummy data
-            if(!db.News.Any())
-            { 
-            DataHelpers.CreateNews();
-            }
-            if (!db.PdfCategories.Any() && !db.ProdCategories.Any())
-            {
-                DataHelpers.CreateCategories();
-            }
+            //if(!db.News.Any())
+            //{ 
+            //DataHelpers.CreateNews();
+            //}
+            //if (!db.PdfCategories.Any() && !db.ProdCategories.Any())
+            //{
+            //    DataHelpers.CreateCategories();
+            //}
             #endregion
 
-            #region loadLastPDFAndProduct 
+            #region loadLastPDFAndProductAndNews 
             try
             {
                 HomeIndexView view = new HomeIndexView();
-                var last = db.Products.OrderByDescending(u => u.ProductId).First();
+                if (db.Products.Any())
+                {
+                    var last = db.Products.OrderByDescending(u => u.ProductId).First();
 
-                view.lastProduct.Description = last.Description;
-                view.lastProduct.id = last.ProductId;
-                view.lastProduct.Name = last.Name;
-                last = null;
+                    view.lastProduct.Description = last.Description;
+                    view.lastProduct.id = last.ProductId;
+                    view.lastProduct.Name = last.Name;
+
+                    last = null;
+                }
+                else
+                {
+                    view.lastProduct = null;
+                }
+
                 var allCategories = db.PdfCategories.ToList();
                 foreach (PdfCategory pd in allCategories)
                 {
@@ -57,9 +71,22 @@ namespace SynMetal_MVC.Controllers
                         pdf.id = LastPdf1.First().PdfId;
                         view.LastPdf.Add(pdf);
                     }
+                    
 
                     pdf = null;
                     LastPdf1 = null;
+                }
+                if(view.LastPdf.Count == 0 )
+                {
+                    view.LastPdf = null;
+                }
+                if(db.News.Any())
+                { 
+                view.LastNews = db.News.OrderByDescending(k => k.NewsId).Take(db.News.Count() > 5 ? 5 : 2).ToList();
+                }
+                else
+                {
+                    view.LastNews = null;
                 }
                 return View(view);
             }
@@ -106,7 +133,14 @@ namespace SynMetal_MVC.Controllers
 
         public ActionResult Search(string SearchText,int? page)
         {
-            string searchstring = Request.QueryString["SearchText"] != null ? Request.QueryString["SearchText"] : "";
+
+            string searchstring;
+            try { 
+            searchstring = Request.QueryString["SearchText"] != null ? Request.QueryString["SearchText"] : "";
+            }catch(HttpRequestValidationException)
+            {
+                searchstring = "";
+            }
             List<SearchView> search = new List<SearchView>();
             if(Regex.IsMatch(searchstring.ToString(),Variables.RegexForNames))
             {
@@ -152,6 +186,12 @@ namespace SynMetal_MVC.Controllers
 
             }
 
+            return View();
+        }
+
+
+        public ActionResult Error()
+        {
             return View();
         }
     }
